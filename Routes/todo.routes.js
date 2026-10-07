@@ -8,7 +8,9 @@ export const todoRoute = Router();
 // get all TODO
 todoRoute.route("/").
     get(async (req, res) => {
+        // get search from query to search about specific todo by name or body
         const { search } = req.query
+        // check if search exist or not
         if (search) {
             const todo_search = await db.search(search);
             return res.status(200).json({
